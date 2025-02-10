@@ -44,7 +44,7 @@ const Home = () => {
             <BlogList blogs={blogs} title="All Blogs!" handleDelete={handleDelete}/>
             
             {/* Viewing my blog one by one method */}
-            <BlogList blogs={blogs.filter((blog) => blog.author === 'collins')} title="Collins's Blogs!" handleDelete={handleDelete}/>
+            {/* <BlogList blogs={blogs.filter((blog) => blog.author === 'collins')} title="Collins's Blogs!" handleDelete={handleDelete}/> */}
         </div>
     );
 }
