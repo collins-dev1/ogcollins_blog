@@ -25,16 +25,26 @@ const Home = () => {
     //     </div>
     //  );
 
+    // Setting up my Blog with the help of useState Method
     const [blogs, setBlogs] = useState([
         {title: 'My new website', body: 'lorem ipsum....', author: 'mario', id:1},
         {title: 'Welcome party!', body: 'lorem ipsun....', author: 'collins', id:2},
         {title: 'Web dev top tips', body: 'lorem ipsum.....', author: 'Blessing', id:3}
     ]);
 
+    // Delete Function for deleting my Blog
+    const handleDelete = (id) => {
+        const newBlogs = blogs.filter(blog => blog.id !== id);
+        setBlogs(newBlogs)
+    }
+
     return(
         <div className="home">
-            <BlogList blogs={blogs} title="All Blogs!"/>
-            <BlogList blogs={blogs.filter((blog) => blog.author === 'collins')} title="Collins's Blogs!"/>
+            {/* Sending variables and function to the bloglist file */}
+            <BlogList blogs={blogs} title="All Blogs!" handleDelete={handleDelete}/>
+            
+            {/* Viewing my blog one by one method */}
+            <BlogList blogs={blogs.filter((blog) => blog.author === 'collins')} title="Collins's Blogs!" handleDelete={handleDelete}/>
         </div>
     );
 }
