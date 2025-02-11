@@ -32,22 +32,26 @@ const Home = () => {
         {title: 'Web dev top tips', body: 'lorem ipsum.....', author: 'Blessing', id:3}
     ]);
 
+    // Changing of Name with useState and useEffect
+    const [name, setName] = useState('mario');
+
     // Delete Function for deleting my Blog
     const handleDelete = (id) => {
         const newBlogs = blogs.filter(blog => blog.id !== id);
-        setBlogs(newBlogs)
+        setBlogs(newBlogs);
     }
 
     useEffect(() => {
         console.log('Use Effect');
-        console.log(blogs);
-    });
+        console.log(name);
+    }, [name]);
 
     return(
         <div className="home">
             {/* Sending variables and function to the bloglist file */}
             <BlogList blogs={blogs} title="All Blogs!" handleDelete={handleDelete}/>
-            
+            <button onClick={() => setName('collins')}>change name</button>
+            <p>{name}</p>
             {/* Viewing my blog one by one method */}
             {/* <BlogList blogs={blogs.filter((blog) => blog.author === 'collins')} title="Collins's Blogs!" handleDelete={handleDelete}/> */}
         </div>
