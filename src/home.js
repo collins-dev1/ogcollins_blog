@@ -33,6 +33,7 @@ const Home = () => {
     // ]);
 
     const [blogs, setBlogs] = useState(null);
+    const [isPending, setIsPending] = useState(true);
 
     // Changing of Name with useState and useEffect
     const [name, setName] = useState('mario');
@@ -44,18 +45,22 @@ const Home = () => {
     // }
 
     useEffect(() => {
-        fetch('http://localhost:8000/blogs')
+        setTimeout(() => {
+          fetch('http://localhost:8000/blogs')
            .then(res => {
              return res.json();
            })
            .then(data => {
-             setBlogs(data)
-           })
+             setBlogs(data);
+             setIsPending(false);
+           });
+        }, 1000);
     }, []);
 
     return(
         <div className="home">
             {/* Sending variables and function to the bloglist file */}
+            {isPending && <div>Loading....</div>}
             {blogs && <BlogList blogs={blogs} title="All Blogs!"/>}
             {/* <button onClick={() => setName('collins')}>change name</button>
             <p>{name}</p> */}
