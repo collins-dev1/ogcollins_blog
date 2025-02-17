@@ -1,6 +1,7 @@
 import Navbar from './navbar';
 import Home from './home';
-import { BrowserRouter as Router,Route,Switch } from 'react-router-dom/cjs/react-router-dom.min';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
+import Create from './create';
 
 // function App() {
 //   const title = 'Welcome to the new blog';
@@ -27,20 +28,23 @@ import { BrowserRouter as Router,Route,Switch } from 'react-router-dom/cjs/react
 //   );
 // }
 
-function App(){
+function App() {
   return (
     <Router>
-    <div className="App">
-      <Navbar />
-      <div className="content">
-        <Switch>
-          <Route path="/">
-            <Home/>
-          </Route>
-        </Switch>
-      </div>
+      <div className="App">
+        <Navbar />
+        <div className="content">
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/create">
+              <Create />
+            </Route>
+          </Switch>
+        </div>
 
-    </div>
+      </div>
     </Router>
   );
 }
